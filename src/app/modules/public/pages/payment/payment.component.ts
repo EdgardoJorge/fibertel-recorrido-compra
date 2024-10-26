@@ -79,8 +79,8 @@ export class PaymentComponent {
         });
 
         // Opcional: limpia el localStorage si ya no necesitas los IDs
-        /* localStorage.removeItem('clienteId');
-        localStorage.removeItem('envioId'); */
+        localStorage.removeItem('clienteId');
+        localStorage.removeItem('envioId');
 
         // Redirige a la siguiente vista después de completar el pago
         this.router.navigate(['/recorrido/completado']);
