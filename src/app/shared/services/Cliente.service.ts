@@ -19,7 +19,7 @@ constructor(private http : HttpClient) { }
     )
   }
   create(body: clientesbody): Observable<clientes> {
-    const url = `${environment.backendBaseUrl}/api/store/envio`;
+    const url = `${environment.backendBaseUrl}/api/store/cliente`;
     return this.http.post<clientes>(url, body);
 }
 }

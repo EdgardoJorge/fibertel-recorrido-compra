@@ -85,7 +85,7 @@ export class CustomerComponent {
         telefonoMovil: this.switchState ? this.celularFactura : this.celularBoleta,
         tipoDocumento: this.switchState ? 'RUC' : 'DNI',
         numeroDocumento: this.switchState ? this.rucData?.ruc : this.dniData?.dni,
-        direccionFiscal: this.switchState ? this.rucData?.direccion : undefined // Puedes agregar lógica para la dirección
+        direccionFiscal: this.switchState ? this.rucData?.direccion : 'cajamarca'
       };
   
       // Llamar al servicio para crear el cliente

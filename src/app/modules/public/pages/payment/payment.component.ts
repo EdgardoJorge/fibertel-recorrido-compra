@@ -36,12 +36,15 @@ export class PaymentComponent {
 
     // Crea el objeto pedido a enviar
     const pedidoData: pedidobody = {
+      fechaPedido: new Date(),
       fechaCancelado: new Date(),
       tipoPedido: 'Entrega',
       estado: 'Pendiente',
-      total: total,
-      idCliente: parseInt(idCliente),
-      idEnvio: parseInt(idEnvio)
+      total: Number(total),
+      idCliente: Number(idCliente),
+      idEnvio: Number(idEnvio),
+      idPersonal: 1,
+      idRecojo: 0
     };
 
     // Llama al servicio de Pedido para crear un nuevo pedido
@@ -56,12 +59,12 @@ export class PaymentComponent {
         const carritoItems = this.carritoService.getcarrito();
         carritoItems.forEach(item => {
           const detallePedidoData: detallePedidobody = {
-            cantidad: item.cantidad,
-            precioUnitario: item.producto.precio,
-            precioDescuento: item.producto.precioOferta || 0, // Asegúrate de que tiene un valor numérico
-            subTotal: item.producto.precio,
-            idProducto: item.producto.idProducto,
-            idPedido: response.idPedido
+            cantidad: Number(item.cantidad),
+            precioUnitario: Number(item.producto.precio),
+            precioDescuento: Number(item.producto.precioOferta) || 0, // Asegúrate de que tiene un valor numérico
+            subTotal: Number(item.producto.precio),
+            idProducto: Number(item.producto.idProducto),
+            idPedido: Number(response.idPedido)
           };
 
           // Llama al servicio de DetallePedido para agregar cada detalle al pedido
@@ -76,8 +79,8 @@ export class PaymentComponent {
         });
 
         // Opcional: limpia el localStorage si ya no necesitas los IDs
-        localStorage.removeItem('clienteId');
-        localStorage.removeItem('envioId');
+        /* localStorage.removeItem('clienteId');
+        localStorage.removeItem('envioId'); */
 
         // Redirige a la siguiente vista después de completar el pago
         this.router.navigate(['/recorrido/completado']);

@@ -11,6 +11,7 @@ export interface Pedido {
     idRecojo?: number; // Opcional
 }
 export interface pedidobody{
+    fechaPedido: Date;
     fechaCancelado?: Date; 
     tipoPedido: string;
     estado: string;
